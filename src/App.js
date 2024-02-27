@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Footer from './components/footer/Footer';
+import Landing from './pages/landing/Landing';
+import Seller from './pages/seller/Seller';
+import Navbar from './components/navbar/navbar';
 
 function App() {
+
+  let [pageInView, setPageInView] =  useState('Landing Page');
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> Topaz agro commerce.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar setPageInView={setPageInView}/>
+
+        {pageInView === 'Landing Page' && <Landing/>}
+        {pageInView === 'Seller Page' && <Seller/>}
+
+        {/* IF/ELSE SYNTAX */}
+        {/* {pageInView === 'Landing Page' ? <Landing/> : <Seller/>} */}
+
+      <Footer/>
     </div>
   );
 }
